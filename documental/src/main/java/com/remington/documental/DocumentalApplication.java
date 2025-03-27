@@ -8,6 +8,7 @@ public class DocumentalApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(DocumentalApplication.class, args);
+		System.out.println("Listo!");
 	}
 
 }
