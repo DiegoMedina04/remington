@@ -1,27 +1,56 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("formArea");
+import { ServicioArea } from "./services/ServicioArea.js";
 
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
+const servicioArea = new ServicioArea();
 
-    const data = {
-      nombre: document.getElementById("nombre").value,
-      estado: document.getElementById("estado").value,
-    };
+// ✅ Cargar áreas y llenar tabla
+document.addEventListener("DOMContentLoaded", async () => {
+  const areas = await servicioArea.obtenerAreas();
+  console.log("Áreas obtenidas:", areas);
 
-    try {
-      const res = await fetch("http://localhost:8080/api/area", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
+  const tbody = document.getElementById("tablaArea");
+  tbody.innerHTML = "";
 
-      if (!res.ok) throw new Error("Error al guardar");
-      alert("Área guardada correctamente");
-      form.reset();
-    } catch (error) {
-      console.error(error);
-      alert("Hubo un error al enviar el formulario.");
-    }
+  areas.forEach((area) => {
+    const row = document.createElement("tr");
+    const estado = area.estado ? "Activo" : "Inactivo";
+    const backgroundState = area.estado ? "bg-success" : "bg-danger";
+    const textColor = "text-white";
+    row.innerHTML = `
+        <td>${area.nombre}</td>
+        <td>
+          <span class="badge ${backgroundState} ${textColor}">${estado}</span>
+        </td>
+        <td>
+          <button class="btn btn-warning btn-sm" onclick="editarArea(${area.id})">Editar</button>
+          <button class="btn btn-danger btn-sm" onclick="eliminarArea(${area.id})">Eliminar</button>
+        </td>
+      `;
+    tbody.appendChild(row);
   });
+});
+
+document.getElementById("formArea").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const id = document.getElementById("idArea").value;
+  const nombre = document.getElementById("nombre").value;
+  const estado = document.getElementById("estado").value;
+
+  const area = { id, nombre, estado };
+
+  try {
+    if (id) {
+      await servicioArea.actualizarArea(area);
+      console.log("Área actualizada:", area);
+    } else {
+      await servicioArea.crearArea(area);
+      console.log("Área creada:", area);
+    }
+
+    document.getElementById("formArea").reset();
+    bootstrap.Modal.getInstance(document.getElementById("modalArea")).hide();
+    location.reload();
+  } catch (error) {
+    console.error("Error al guardar:", error);
+  }
 });

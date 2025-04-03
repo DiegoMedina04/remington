@@ -34,7 +34,6 @@
           <table class="table table-bordered">
             <thead>
               <tr>
-                <th>ID</th>
                 <th>Nombre</th>
                 <th>Estado</th>
 
@@ -100,18 +99,13 @@
       </div>
     </div>
 
+    <script src="../js/fase_proyecto.js" type="module"></script>
+
     <script>
-      fetch("../sidebar/sidebar.html")
+      fetch("../components/sidebar.html")
         .then((res) => res.text())
         .then((html) => {
           document.getElementById("sidebar-container").innerHTML = html;
-        });
-
-      document
-        .getElementById("formFaseProyecto")
-        .addEventListener("submit", function (e) {
-          e.preventDefault();
-          console.log("Guardando FaseProyecto...");
         });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

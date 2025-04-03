@@ -34,7 +34,6 @@
           <table class="table table-bordered">
             <thead>
               <tr>
-                <th>ID</th>
                 <th>Nombre</th>
                 <th>Version</th>
                 <th>Fechainscripcion</th>
@@ -174,18 +173,13 @@
       </div>
     </div>
 
+    <script src="../js/proyecto.js" type="module"></script>
+
     <script>
-      fetch("../sidebar/sidebar.html")
+      fetch("../components/sidebar.html")
         .then((res) => res.text())
         .then((html) => {
           document.getElementById("sidebar-container").innerHTML = html;
-        });
-
-      document
-        .getElementById("formProyecto")
-        .addEventListener("submit", function (e) {
-          e.preventDefault();
-          console.log("Guardando Proyecto...");
         });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

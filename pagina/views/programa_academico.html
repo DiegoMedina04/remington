@@ -22,7 +22,7 @@
         ></div>
 
         <div class="col py-3 px-4">
-          <h2 class="mb-4">Gestión de ProgramaAcademico</h2>
+          <h2 class="mb-4">Gestión de Programa Academico</h2>
           <button
             class="btn btn-primary mb-3"
             data-bs-toggle="modal"
@@ -34,7 +34,6 @@
           <table class="table table-bordered">
             <thead>
               <tr>
-                <th>ID</th>
                 <th>Nombre</th>
                 <th>Estado</th>
 
@@ -100,18 +99,13 @@
       </div>
     </div>
 
+    <script src="../js/programa_academico.js" type="module"></script>
+
     <script>
-      fetch("../sidebar/sidebar.html")
+      fetch("../components/sidebar.html")
         .then((res) => res.text())
         .then((html) => {
           document.getElementById("sidebar-container").innerHTML = html;
-        });
-
-      document
-        .getElementById("formProgramaAcademico")
-        .addEventListener("submit", function (e) {
-          e.preventDefault();
-          console.log("Guardando ProgramaAcademico...");
         });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
