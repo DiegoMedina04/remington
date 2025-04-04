@@ -11,6 +11,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   proyectos.forEach((proyecto) => {
     const row = document.createElement("tr");
+    const estado = proyecto.estado ? "Activo" : "Inactivo";
+    const backgroundState = proyecto.estado ? "bg-success" : "bg-danger";
+    const textColor = "text-white";
     row.innerHTML = `
         <td>${proyecto.nombre}</td>
         <td>${proyecto.version}</td>
@@ -23,7 +26,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         <td>${proyecto.programaAcademico}</td>
         <td>${proyecto.facultad}</td>
         <td>${proyecto.area}</td>
-        <td>${proyecto.estado}</td>
+        <td>
+          <span class="badge ${backgroundState} ${textColor}">${estado}</span>
+        </td>
         <td>
           <button class="btn btn-warning btn-sm" onclick="editarproyecto(${proyecto.id})">Editar</button>
           <button class="btn btn-danger btn-sm" onclick="eliminarproyecto(${proyecto.id})">Eliminar</button>

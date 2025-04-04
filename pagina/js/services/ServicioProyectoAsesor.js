@@ -1,4 +1,4 @@
-import { seedProyectoEstudiante } from "../api/seed/seedProyectoEstudiante.js";
+import { seedProyectoAsesor } from "../api/seed/seedProyectoAsesor.js";
 
 export class ServicioProyectoAsesor {
   constructor() {}
@@ -12,12 +12,12 @@ export class ServicioProyectoAsesor {
         return asesorProtectos;
       }
       // const response = await this.request(`area`, 'GET');
-      // const seedProyectoEstudiante = await response.json();
+      // const seedProyectoAsesor = await response.json();
       localStorage.setItem(
         "asesorProtectos",
-        JSON.stringify(seedProyectoEstudiante)
+        JSON.stringify(seedProyectoAsesor)
       );
-      return seedProyectoEstudiante;
+      return seedProyectoAsesor;
     } catch (error) {
       return [];
     }

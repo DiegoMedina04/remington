@@ -9,14 +9,19 @@ document.addEventListener("DOMContentLoaded", async () => {
   const tbody = document.getElementById("tablaSemillero");
   tbody.innerHTML = "";
 
-  semilleros.forEach((proyecto) => {
+  semilleros.forEach((semillero) => {
     const row = document.createElement("tr");
+    const estado = semillero.estado ? "Activo" : "Inactivo";
+    const backgroundState = semillero.estado ? "bg-success" : "bg-danger";
+    const textColor = "text-white";
     row.innerHTML = `
-        <td>${proyecto.nombre}</td>
-        <td>${proyecto.estado}</td>
+        <td>${semillero.nombre}</td>
         <td>
-          <button class="btn btn-warning btn-sm" onclick="editarproyecto(${proyecto.id})">Editar</button>
-          <button class="btn btn-danger btn-sm" onclick="eliminarproyecto(${proyecto.id})">Eliminar</button>
+          <span class="badge ${backgroundState} ${textColor}">${estado}</span>
+        </td>
+        <td>
+          <button class="btn btn-warning btn-sm" onclick="editarsemillero(${semillero.id})">Editar</button>
+          <button class="btn btn-danger btn-sm" onclick="eliminarsemillero(${semillero.id})">Eliminar</button>
         </td>
       `;
     tbody.appendChild(row);
