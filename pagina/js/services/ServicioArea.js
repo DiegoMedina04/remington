@@ -42,9 +42,11 @@ export class ServicioArea {
 
   async obtenerAreaPorId(id) {
     try {
-      const response = await this.request(`area/${id}`, "GET");
-      const data = await response.json();
-      return data;
+      // const response = await this.request(`area/${id}`, "GET");
+      // const data = await response.json();
+      // return data;
+      const areas = JSON.parse(localStorage.getItem("areas"));
+      return areas.find((area) => area.id == id);
     } catch (error) {
       return [];
     }

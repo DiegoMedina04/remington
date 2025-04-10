@@ -15,6 +15,14 @@ export class ServicioAsesor {
       return [];
     }
   }
+  async obtenerAsesorsPorId(id) {
+    try {
+      const asesores = JSON.parse(localStorage.getItem("asesores"));
+      return asesores.find((asesor) => asesor.id == id);
+    } catch (error) {
+      return [];
+    }
+  }
 
   async crearAsesor(asesor) {
     console.log("Creando Asesor (mock):", asesor);

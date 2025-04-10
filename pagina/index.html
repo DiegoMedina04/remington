@@ -4,8 +4,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bootstrap demo</title>
+  <title>Universidad Remington</title>
   <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHc1Fi9tzVcn617yDlHAlFBP0Ufp_PwvUAMg&s" type="image/png">
+
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
 </head>
@@ -15,7 +17,6 @@
     <div class="row flex-nowrap">
       <div id="sidebar-container" class="col-auto col-md-3 col-xl-2 px-sm-2 px-0"></div>
       <div class="col py-3">
-        <h1>vistas</h1>
       </div>
     </div>
   </div>
@@ -32,7 +33,7 @@
 
 </html>
 <script>
-  fetch("./components/sidebar.html")
+  fetch("./components/sidebar2.html")
     .then(res => res.text())
     .then(html => {
       document.getElementById("sidebar-container").innerHTML = html;
