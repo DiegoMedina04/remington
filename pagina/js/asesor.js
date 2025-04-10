@@ -35,7 +35,8 @@ document
   .getElementById("modalAsesor")
   .addEventListener("hidden.bs.modal", () => {
     document.getElementById("formAsesor").reset();
-    document.getElementById("idAsesor").value = ""; 
+    document.getElementById("idAsesor").value = "";
+  });
 
 document.getElementById("formAsesor").addEventListener("submit", async (e) => {
   e.preventDefault();
